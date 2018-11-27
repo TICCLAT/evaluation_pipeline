@@ -1,7 +1,11 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: ["ticcl.nf"]
+baseCommand: "ticcl.nf"
+hints:
+  - class: DockerRequirement
+    dockerPull: egpbos/lamachine:piccl
+
 doc: |
   Run TICCL nextflow pipeline.
 
