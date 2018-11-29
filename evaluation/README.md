@@ -88,7 +88,7 @@ With the Jupyter notebook visualizeScores.ipynb we created data
 visualizations for these two strategies applied to articles from
 one issue of the De Volkskrant newspaper (2 January 1965):
 
-<img src="images/knownWords.png" width="400"> <img src="images/hapaxCount.png" width="400"> <img src="images/comparison.png" width="400">
+<img src="images/knownWords.png" width="440"> <img src="images/hapaxCount.png" width="440"> <img src="images/comparison.png" width="440">
 
 ## References
 
