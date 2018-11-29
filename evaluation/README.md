@@ -86,7 +86,8 @@ case-insensitive comparison.
 
 With the Jupyter notebook visualizeScores.ipynb we created data
 visualizations for these two strategies applied to articles from
-one issue of the De Volkskrant newspaper (2 January 1965):
+one issue of the De Volkskrant newspaper (2 January 1965). The 
+correlation factor between the two measures was -0.76.
 
 <img src="images/knownWords.png" width="440"> <img src="images/hapaxCount.png" width="440"> <img src="images/comparison.png" width="440">
 
