@@ -50,11 +50,26 @@ rates (WER)
 
 ### Evaluation without gold standard data
 
-counting lexicon words
+Often there is no gold standard data available for checking the 
+quality of the text. For this scenario we examined two strategies.
+First, we explored using a lexicon to check how many known words 
+the OCR texts contain. Like Van Erp et al. (2018), we employed 
+the [IMPACT lexicons for Dutch words and Dutch names](https://www.digitisation.eu/tools-resources/language-resources/historical-and-named-entities-lexica-of-dutch/):
 
-counting unique words
+```sh
+$ python3 knownWords data/a0001-ocr.txt
+data/a0001-ocr.txt: Known tokens: Case sensitive: 76.8% Case insensitive: 80.5%
+```
+
+The program presents two variants of the percentage of tokens in 
+each text that are present in the two lexicons: a case-sensitive
+count and a case-insensitive count. Only tokens that contain an
+alphabetic character (a-zA-Z) are considered for these counts.
+
+The next strategy consisted of counting the number of unique 
+tokens each text contains.
 
 # Reference
 
-Marieke van Erp, Melvin Wevers and Hugo Huurdeman, Constructing a Recipe Web from Historical Newspapers. In: "Proceedings of the International Semantic Web Conference - ISWC 2018", Springer Verlag, pages 217-232, 2018.
+Marieke van Erp, Melvin Wevers and Hugo Huurdeman, Constructing a Recipe Web from Historical Newspapers. In: "Proceedings of the International Semantic Web Conference - ISWC 2018", Springer Verlag, pages 217-232, 2018. [PDF](https://github.com/DHLab-nl/historical-recipe-web/blob/master/constructing-recipe-web-2.pdf)
 
