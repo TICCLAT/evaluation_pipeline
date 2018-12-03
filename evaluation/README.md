@@ -34,19 +34,25 @@ originates from the [CLIN27 Shared Task](https://ifarm.nl/clin2017st/)
 The second evaluation strategy used concerned the OCR evaluation
 tool [ocrevalUAtion](https://github.com/impactcentre/ocrevalUAtion).
 We downloaded the version of NLPPLN: [ocrevaluation-docker](https://github.com/nlppln/ocrevaluation-docker)
-from Github and expanded the default run script run.py (to be added). Next
-we applied the script as follows:
+from Github and expanded the default Python run script run.py. 
+With run.py, we generated the cwl script run.cwl. This script
+could then be used to evaluate OCR files:
 
 ```sh
-$ cwl-runner run.cwl --gt data/a0001-gold.txt data/a0001-ocr.txt
-$ grep '[WC]ER' a0001_out.html | sed 's/<[^<>]*>/ /g'
+$ python3 run.py
+$ cwl-runner run.cwl --gt data/a0001-gold.txt --ocr data/a0001-ocr.txt
+$ grep '[WC]ER' a0001-gold_out.html | sed 's/<[^<>]*>/ /g'
 CER  9.33 
 WER  25.19 
 WER (order independent)  23.70 
 ```
 
 The program reports character error rates (CER) and word error
-rates (WER)
+rates (WER). The numbers are percentages: 9.33 means that roughly
+9% of the characters are incorrect. The error rates are calculated
+by counting character replacement operations required to convert
+the OCR text to the gold text (Levenshtein distance). More details 
+can be found in the [ocrevalUAtion manual](https://sites.google.com/site/textdigitisation/qualitymeasures/computingerrorrates).
 
 ## Evaluation without gold standard data
 
@@ -95,4 +101,4 @@ correlation factor between the two measures was -0.76.
 
 Marieke van Erp, Melvin Wevers and Hugo Huurdeman, [Constructing a Recipe Web from Historical Newspapers](https://github.com/DHLab-nl/historical-recipe-web/blob/master/constructing-recipe-web-2.pdf). In: "Proceedings of the International Semantic Web Conference - ISWC 2018", Springer Verlag, pages 217-232, 2018.
 
-Erik Tjong Kim Sang, Marcel Bollmann, Remko Boschker, Francisco Casacuberta, Feike Dietz, Stefanie Dipper, Miguel Domingo, Rob van der Goot, Marjo van Koppen, Nikola Ljubešiç, Robert Östling, Florian Petran, Eva Pettersson, Yves Scherrer, Marijn Schraagen, Leen Sevens, Jörg Tiedemann, Tom Vanallemeersch and Kalliopi Zervanou, [The CLIN27 Shared Task: Translating Historical Text to Contemporary Language for Improving Automatic Linguistic Annotation](http://clinjournal.org/sites/clinjournal.org/files/04.clin27-shared-task.pdf). In: Computational Linguistics in the Netherlands Journal, volume 7, pages 53-64, 2017, ISSN 2211-4009.
+Erik Tjong Kim Sang, Marcel Bollmann, Remko Boschker, Francisco Casacuberta, Feike Dietz, Stefanie Dipper, Miguel Domingo, Rob van der Goot, Marjo van Koppen, Nikola Ljubešiç, Robert Östling, Florian Petran, Eva Pettersson, Yves Scherrer, Marijn Schraagen, Leen Sevens, Jörg Tiedemann, Tom Vanallemeersch and Kalliopi Zervanou, [The CLIN27 Shared Task: Translating Historical Text to Contemporary Language for Improving Automatic Linguistic Annotation](http://clinjournal.org/sites/clinjournal.org/files/04.clin27-shared-task.pdf). In: "Computational Linguistics in the Netherlands Journal", volume 7, pages 53-64, 2017, ISSN 2211-4009.
